@@ -26,4 +26,13 @@ describe Game do
       expect(game.fields).to eq([1, 'O', 3, 'X', 'X', 6, 7, 8, 9])
     end
   end
+
+  describe '#winner?' do
+    it 'allows a game to end in a draw' do
+      DRAW_GAME = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X']
+      allow(game).to receive(:fields).and_return(DRAW_GAME)
+      p game.fields
+      expect(game.winner?).to eq('Draw')
+    end
+  end
 end

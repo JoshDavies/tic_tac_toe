@@ -22,11 +22,3 @@ class Game
     end
   end
 end
-
-
-
-game = Game.new
-game.player_move(1)
-game.player_move(2)
-game.player_move(3)
-p game.fields
