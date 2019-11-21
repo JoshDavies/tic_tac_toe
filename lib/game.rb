@@ -37,14 +37,12 @@ class Game
   end
 
   def player_wins?
-    if @fields.values_at(0, 1, 2).uniq.count == 1
-      return current_turn + ' wins!'
-    end
-    if @fields.values_at(3, 4, 5).uniq.count == 1
-      return current_turn + ' wins!'
-    end
-    if @fields.values_at(6, 7, 8).uniq.count == 1
-      return current_turn + ' wins!'
-    end
+    return current_turn + ' wins!' if three_in_a_row?(0, 1, 2)
+    return current_turn + ' wins!' if three_in_a_row?(3, 4, 5)
+    return current_turn + ' wins!' if three_in_a_row?(6, 7, 8)
+  end
+
+  def three_in_a_row?(a, b, c)
+    return @fields.values_at(a, b, c).uniq.count == 1
   end
 end
