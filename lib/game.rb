@@ -11,18 +11,15 @@ class Game
   def player_move(move)
     return 'Field already taken' unless field_available?(move)
     update_field(move)
+    return 'Draw' if draw?
     end_turn
   end
 
   def draw?
-    unless @fields.any?(1..9)
-      return 'Draw'
-    else
-      'error'
-    end
+    return false if @fields.any? Numeric
+    true
   end
 
-  private
   def end_turn
     if @current_turn == 'X'
       @current_turn = 'O'
@@ -31,6 +28,7 @@ class Game
     end
   end
 
+  private
   def field_available?(move)
      @fields[move - 1].is_a? Numeric
   end

@@ -14,6 +14,12 @@ describe Game do
       game.player_move(4)
       expect(game.fields).to eq([1, 2, 3, 'X', 5, 6, 7, 8, 9])
     end
+    it 'ends a players turn after they have claimed a field' do
+      game.player_move(3)
+      expect(game.current_turn).to eq('O')
+      game.player_move(7)
+      expect(game.current_turn).to eq('X')
+    end
     it 'allows player2 to enter their move in any available field' do
       game.player_move(5)
       game.player_move(2)
@@ -32,18 +38,18 @@ describe Game do
     end
   end
 
-  # describe '#end_turn' do
-  #   it 'allows a game to end in a draw' do
-  #     game.end_turn
-  #     expect(game.current_turn).to eq('O')
-  #   end
-  # end
-
   describe '#draw?' do
     it 'allows a game to end in a draw' do
       DRAW_GAME = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X']
       draw_game = Game.new(fields: DRAW_GAME)
-      expect(draw_game.draw?).to eq('Draw')
+      expect(draw_game.draw?).to eq(true)
+    end
+  end
+
+  describe '#end_turn' do
+    it 'allows a game to end in a draw' do
+      game.end_turn
+      expect(game.current_turn).to eq('O')
     end
   end
 end
