@@ -15,9 +15,9 @@ Build the business logic for a game of tic tac toe. It should be easy to impleme
 - A game is over when all fields are taken
 
 ### Victory Conditions
-'≡' 3 horizontal possibilities
-'|||' 3 vertical possibilities
-'X' 2 diagonal possibilities
+'≡' 3 horizontal possibilities  
+'|||' 3 vertical possibilities  
+'X' 2 diagonal possibilities  
 
 ## Quickstart
 First, clone this repository. Then:
@@ -59,7 +59,7 @@ I want the game to end in a draw if all fields are taken.
 - Display?
 
 ### Messages:
-- player_turn(chosen_field)
+- player_move(chosen_field)
 - end_turn
 - valid_move?
 - game_won?
