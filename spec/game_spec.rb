@@ -71,9 +71,15 @@ describe Game do
 
   describe '#player_wins?' do
     it 'checks if the current player has won' do
-      HORIZONTAL_WIN = ['X', 'X', 'X', 4, 5, 6, 7, 8, 9]
-      game = Game.new(fields: HORIZONTAL_WIN)
+      X_WIN = ['X', 'X', 'X', 4, 5, 6, 7, 8, 9]
+      game = Game.new(fields: X_WIN)
       expect(game.player_wins?).to eq('X wins!')
+    end
+    it 'checks if player2 has won' do
+      O_WIN = ['O', 'O', 'O', 4, 5, 6, 7, 8, 9]
+      second_game = Game.new(fields: O_WIN)
+      allow(second_game).to receive(:current_turn).and_return('O')
+      expect(second_game.player_wins?).to eq('O wins!')
     end
   end
 end
