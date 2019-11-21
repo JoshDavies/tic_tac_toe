@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Game
-  def initialize
-    @fields = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  def initialize(fields: [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    @fields = fields
     @current_turn = 'X'
   end
 
@@ -10,10 +11,18 @@ class Game
 
   def player_move(move)
     @fields[move - 1] = current_turn
+    draw?
     end_turn
   end
 
-  private
+  def draw?
+    unless @fields.any?(1..9)
+      return 'Draw'
+    else
+      'error'
+    end
+  end
+
   def end_turn
     if @current_turn == 'X'
       @current_turn = 'O'

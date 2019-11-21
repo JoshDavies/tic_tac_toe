@@ -11,8 +11,9 @@ describe Game do
       expect(game.fields).to eq(['X', 2, 3, 4, 5, 6, 7, 8, 9])
     end
     it 'allows player1 to enter their move in any field' do
-      game.player_move(4)
-      expect(game.fields).to eq([1, 2, 3, 'X', 5, 6, 7, 8, 9])
+      test = Game.new
+      test.player_move(4)
+      expect(test.fields).to eq([1, 2, 3, 'X', 5, 6, 7, 8, 9])
     end
     it 'allows player2 to enter their move in any available field' do
       game.player_move(5)
@@ -27,12 +28,18 @@ describe Game do
     end
   end
 
-  describe '#winner?' do
+  describe '#end_turn' do
+    it 'allows a game to end in a draw' do
+      game.end_turn
+      expect(game.current_turn).to eq('O')
+    end
+  end
+
+  describe '#draw?' do
     it 'allows a game to end in a draw' do
       DRAW_GAME = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X']
-      allow(game).to receive(:fields).and_return(DRAW_GAME)
-      p game.fields
-      expect(game.winner?).to eq('Draw')
+      draw_game = Game.new(fields: DRAW_GAME)
+      expect(draw_game.draw?).to eq('Draw')
     end
   end
 end
