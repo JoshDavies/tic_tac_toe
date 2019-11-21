@@ -40,5 +40,11 @@ class Game
     if fields[0] == fields[1] && fields[0] == fields[2]
       return current_turn + ' wins!'
     end
+    if fields[3] == fields[4] && fields[3] == fields[5]
+      return current_turn + ' wins!'
+    end
+    if fields[6] == fields[7] && fields[6] == fields[8]
+      return current_turn + ' wins!'
+    end
   end
 end

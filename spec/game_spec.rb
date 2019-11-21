@@ -76,8 +76,14 @@ describe Game do
       expect(game.player_wins?).to eq('X wins!')
     end
     it 'checks if player2 has won' do
-      O_WIN = ['O', 'O', 'O', 4, 5, 6, 7, 8, 9]
+      O_WIN = [1, 2, 3, 'O', 'O', 'O', 7, 8, 9]
       second_game = Game.new(fields: O_WIN)
+      allow(second_game).to receive(:current_turn).and_return('O')
+      expect(second_game.player_wins?).to eq('O wins!')
+    end
+    it 'checks last horizontal win Condition' do
+      HORIZONTAL_WIN = [1, 2, 3, 4, 5, 6, 'O', 'O', 'O']
+      second_game = Game.new(fields: HORIZONTAL_WIN)
       allow(second_game).to receive(:current_turn).and_return('O')
       expect(second_game.player_wins?).to eq('O wins!')
     end
