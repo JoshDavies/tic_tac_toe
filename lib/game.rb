@@ -37,13 +37,13 @@ class Game
   end
 
   def player_wins?
-    if fields[0] == fields[1] && fields[0] == fields[2]
+    if @fields.values_at(0, 1, 2).uniq.count == 1
       return current_turn + ' wins!'
     end
-    if fields[3] == fields[4] && fields[3] == fields[5]
+    if @fields.values_at(3, 4, 5).uniq.count == 1
       return current_turn + ' wins!'
     end
-    if fields[6] == fields[7] && fields[6] == fields[8]
+    if @fields.values_at(6, 7, 8).uniq.count == 1
       return current_turn + ' wins!'
     end
   end
