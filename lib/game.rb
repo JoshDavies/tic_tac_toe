@@ -15,12 +15,18 @@ class Game
 
   private
   def end_turn
-    @current_turn = 'O'
+    if @current_turn == 'X'
+      @current_turn = 'O'
+    else
+      @current_turn = 'X'
+    end
   end
 end
 
 
 
 game = Game.new
-game.player_move(5)
+game.player_move(1)
+game.player_move(2)
+game.player_move(3)
 p game.fields
