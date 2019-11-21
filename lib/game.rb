@@ -37,12 +37,16 @@ class Game
   end
 
   def player_wins?
-    return current_turn + ' wins!' if three_in_a_row?(0, 1, 2)
-    return current_turn + ' wins!' if three_in_a_row?(3, 4, 5)
-    return current_turn + ' wins!' if three_in_a_row?(6, 7, 8)
+    victory_conditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    victory_conditions.each{ |condition|
+      return current_turn + ' wins!' if three_in_a_row?(condition)
+    }
   end
 
-  def three_in_a_row?(a, b, c)
+  def three_in_a_row?(condition)
+    a = condition[0]
+    b = condition[1]
+    c = condition[2]
     return @fields.values_at(a, b, c).uniq.count == 1
   end
 end
