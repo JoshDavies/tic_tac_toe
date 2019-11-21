@@ -52,4 +52,20 @@ describe Game do
       expect(game.current_turn).to eq('O')
     end
   end
+
+  describe '#update_field' do
+    it 'updates the chosen field with a players move' do
+      game.update_field(1)
+      expect(game.fields).to eq(['X', 2, 3, 4, 5, 6, 7, 8, 9])
+    end
+  end
+
+  describe '#field_available?' do
+    it 'checks if the chosen fields has already been taken' do
+      TEST_GAME = ['X', 2, 3, 4, 5, 6, 7, 8, 9]
+      test_game = Game.new(fields: TEST_GAME)
+      expect(test_game.field_available?(1)).to eq(false)
+      expect(test_game.field_available?(2)).to eq(true)
+    end
+  end
 end

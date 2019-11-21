@@ -28,7 +28,6 @@ class Game
     end
   end
 
-  private
   def field_available?(move)
      @fields[move - 1].is_a? Numeric
   end
