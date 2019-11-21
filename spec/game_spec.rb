@@ -27,7 +27,7 @@ describe Game do
     end
     it 'does not allow a player to pick a field that is already taken' do
       game.player_move(9)
-      expect(game.player_move(9)).to eq('Invalid Move')
+      expect(game.player_move(9)).to eq('Field already taken')
       expect(game.current_turn).to eq('O')
     end
   end

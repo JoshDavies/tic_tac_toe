@@ -10,7 +10,11 @@ class Game
   attr_reader :fields, :current_turn
 
   def player_move(move)
-    @fields[move - 1] = current_turn
+    if field_available?(move)
+      @fields[move - 1] = current_turn
+    else
+      return 'Field already taken'
+    end
     end_turn
   end
 
@@ -30,4 +34,10 @@ class Game
       @current_turn = 'X'
     end
   end
+
+  def field_available?(move)
+     @fields[move - 1].is_a? Numeric
+  end
 end
+
+'Invalid Move'
