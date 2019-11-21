@@ -19,5 +19,11 @@ describe Game do
       game.player_move(2)
       expect(game.fields).to eq([1, 'O', 3, 4, 'X', 6, 7, 8, 9])
     end
+    it 'allows player1 to enter their second move in any available field' do
+      game.player_move(5)
+      game.player_move(2)
+      game.player_move(4)
+      expect(game.fields).to eq([1, 'O', 3, 'X', 'X', 6, 7, 8, 9])
+    end
   end
 end
