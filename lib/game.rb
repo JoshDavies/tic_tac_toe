@@ -11,7 +11,6 @@ class Game
 
   def player_move(move)
     @fields[move - 1] = current_turn
-    draw?
     end_turn
   end
 
@@ -23,6 +22,7 @@ class Game
     end
   end
 
+  private
   def end_turn
     if @current_turn == 'X'
       @current_turn = 'O'
