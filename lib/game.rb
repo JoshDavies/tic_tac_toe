@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Game
-
   def initialize(fields: [1, 2, 3, 4, 5, 6, 7, 8, 9])
     @fields = fields
     @current_turn = 'X'
@@ -10,11 +9,8 @@ class Game
   attr_reader :fields, :current_turn
 
   def player_move(move)
-    if field_available?(move)
-      @fields[move - 1] = current_turn
-    else
-      return 'Field already taken'
-    end
+    return 'Field already taken' unless field_available?(move)
+    update_field(move)
     end_turn
   end
 
@@ -38,6 +34,8 @@ class Game
   def field_available?(move)
      @fields[move - 1].is_a? Numeric
   end
-end
 
-'Invalid Move'
+  def update_field(move)
+    @fields[move - 1] = current_turn
+  end
+end
