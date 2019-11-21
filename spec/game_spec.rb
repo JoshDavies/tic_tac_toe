@@ -68,4 +68,12 @@ describe Game do
       expect(test_game.field_available?(2)).to eq(true)
     end
   end
+
+  describe '#player_wins?' do
+    it 'checks if the current player has won' do
+      HORIZONTAL_WIN = ['X', 'X', 'X', 4, 5, 6, 7, 8, 9]
+      game = Game.new(fields: HORIZONTAL_WIN)
+      expect(game.player_wins?).to eq('X wins!')
+    end
+  end
 end

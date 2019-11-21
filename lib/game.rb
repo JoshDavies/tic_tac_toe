@@ -35,4 +35,8 @@ class Game
   def update_field(move)
     @fields[move - 1] = current_turn
   end
+
+  def player_wins?
+
+  end
 end
