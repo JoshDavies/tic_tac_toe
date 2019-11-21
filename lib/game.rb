@@ -37,6 +37,8 @@ class Game
   end
 
   def player_wins?
-
+    if fields[0] == fields[1] && fields[0] == fields[2]
+      return 'X wins!'
+    end
   end
 end
