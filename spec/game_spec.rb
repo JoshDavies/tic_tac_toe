@@ -81,17 +81,23 @@ describe Game do
       allow(second_game).to receive(:current_turn).and_return('O')
       expect(second_game.player_wins?).to eq('O wins!')
     end
-    it 'checks last horizontal win Condition' do
+    it 'allows a player to win by a horizontal Condition' do
       HORIZONTAL_WIN = [1, 2, 3, 4, 5, 6, 'O', 'O', 'O']
       second_game = Game.new(fields: HORIZONTAL_WIN)
       allow(second_game).to receive(:current_turn).and_return('O')
       expect(second_game.player_wins?).to eq('O wins!')
     end
-    it 'player can win by a vertical Condition' do
+    it 'allows a player to win by a vertical Condition' do
       VERTICAL_WIN = [1, 'O', 3, 4, 'O', 6, 7, 'O', 9]
       third_game = Game.new(fields: VERTICAL_WIN)
       allow(third_game).to receive(:current_turn).and_return('O')
       expect(third_game.player_wins?).to eq('O wins!')
+    end
+    it 'allows a player to win by a diagonal Condition' do
+      DIAGONAL_WIN = ['O', 2, 3, 4, 'O', 6, 7, 8, 'O']
+      fourth_game = Game.new(fields: DIAGONAL_WIN)
+      allow(fourth_game).to receive(:current_turn).and_return('O')
+      expect(fourth_game.player_wins?).to eq('O wins!')
     end
   end
 end
