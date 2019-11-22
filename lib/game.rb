@@ -55,35 +55,3 @@ class Game
     return fields.values_at(a, b, c).uniq.count == 1
   end
 end
-
-game = Game.new
-game.player_move(1)
-p game.message
-p game.fields
-p game.player_wins?
-p game.current_turn
-p '------------'
-game.player_move(2)
-p game.message
-p game.fields
-p game.player_wins?
-p game.current_turn
-p '------------'
-game.player_move(4)
-p game.message
-p game.fields
-p game.player_wins?
-p game.current_turn
-p '------------'
-game.player_move(9)
-p game.message
-p game.fields
-p game.player_wins?
-p game.current_turn
-p '------------'
-p game.player_move(7)
-p game.message
-p game.fields
-p game.player_wins?
-p game.current_turn
-p '------------'

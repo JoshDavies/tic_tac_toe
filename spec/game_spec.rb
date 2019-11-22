@@ -45,6 +45,9 @@ describe Game do
       draw_game = Game.new(fields: DRAW_GAME)
       expect(draw_game.draw?).to eq(true)
     end
+    it 'returns false if there are still fields available' do
+      expect(game.draw?).to eq(false)
+    end
   end
 
   describe '#end_turn' do
