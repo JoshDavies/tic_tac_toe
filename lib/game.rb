@@ -7,12 +7,12 @@ class Game
     @message = 'Player X make your move'
   end
 
-  attr_reader :fields, :current_turn
+  attr_reader :fields, :current_turn, :message
 
   def player_move(move)
-    return 'Field already taken' unless field_available?(move)
+    return if field_unavailable?(move)
     update_field(move)
-    player_wins?
+    # return if player_wins?
     return 'Draw' if draw?
     end_turn
   end
@@ -27,8 +27,10 @@ class Game
     @message = 'Player ' + current_turn + ' make your move'
   end
 
-  def field_available?(move)
-     fields[move - 1].is_a? Numeric
+  def field_unavailable?(move)
+    return false if fields[move - 1].is_a? Numeric
+    @message = 'field taken, chose another'
+    true
   end
 
   def update_field(move)
@@ -56,8 +58,32 @@ end
 
 game = Game.new
 game.player_move(1)
-game.player_move(2)
-game.player_move(4)
-game.player_move(9)
-p game.player_move(7)
+p game.message
+p game.fields
 p game.player_wins?
+p game.current_turn
+p '------------'
+game.player_move(2)
+p game.message
+p game.fields
+p game.player_wins?
+p game.current_turn
+p '------------'
+game.player_move(4)
+p game.message
+p game.fields
+p game.player_wins?
+p game.current_turn
+p '------------'
+game.player_move(9)
+p game.message
+p game.fields
+p game.player_wins?
+p game.current_turn
+p '------------'
+p game.player_move(7)
+p game.message
+p game.fields
+p game.player_wins?
+p game.current_turn
+p '------------'

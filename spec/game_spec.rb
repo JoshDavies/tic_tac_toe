@@ -33,7 +33,8 @@ describe Game do
     end
     it 'does not allow a player to pick a field that is already taken' do
       game.player_move(9)
-      expect(game.player_move(9)).to eq('Field already taken')
+      game.player_move(9)
+      expect(game.message).to eq('field taken, chose another')
       expect(game.current_turn).to eq('O')
     end
   end
@@ -60,12 +61,12 @@ describe Game do
     end
   end
 
-  describe '#field_available?' do
+  describe '#field_unavailable?' do
     it 'checks if the chosen fields has already been taken' do
       TEST_GAME = ['X', 2, 3, 4, 5, 6, 7, 8, 9]
       test_game = Game.new(fields: TEST_GAME)
-      expect(test_game.field_available?(1)).to eq(false)
-      expect(test_game.field_available?(2)).to eq(true)
+      expect(test_game.field_unavailable?(1)).to eq(true)
+      expect(test_game.field_unavailable?(2)).to eq(false)
     end
   end
 
