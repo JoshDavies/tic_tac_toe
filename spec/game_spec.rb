@@ -87,5 +87,11 @@ describe Game do
       allow(second_game).to receive(:current_turn).and_return('O')
       expect(second_game.player_wins?).to eq('O wins!')
     end
+    it 'player can win by a vertical Condition' do
+      VERTICAL_WIN = [1, 'O', 3, 4, 'O', 6, 7, 'O', 9]
+      third_game = Game.new(fields: VERTICAL_WIN)
+      allow(third_game).to receive(:current_turn).and_return('O')
+      expect(third_game.player_wins?).to eq('O wins!')
+    end
   end
 end

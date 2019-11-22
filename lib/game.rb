@@ -37,7 +37,9 @@ class Game
   end
 
   def player_wins?
-    victory_conditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    victory_conditions = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    ]
     victory_conditions.each{ |condition|
       return current_turn + ' wins!' if three_in_a_row?(condition)
     }
