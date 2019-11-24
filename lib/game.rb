@@ -7,8 +7,6 @@ class Game
     @message = 'Player X make your move'
   end
 
-  attr_reader :fields, :current_turn, :message
-
   def player_move(move)
     return if field_unavailable?(move)
     update_field(move)
@@ -18,23 +16,22 @@ class Game
   end
 
   def draw?
-    return false if fields.any? Numeric
+    return false if @fields.any? Numeric
     true
   end
 
   def end_turn
-    current_turn == 'X' ? (@current_turn = 'O') : (@current_turn = 'X')
-    @message = 'Player ' + current_turn + ' make your move'
+    @current_turn == 'X' ? (@current_turn = 'O') : (@current_turn = 'X')
   end
 
   def field_unavailable?(move)
     return false if fields[move - 1].is_a? Numeric
-    @message = 'field taken, chose another'
     true
   end
 
   def update_field(move)
-    fields[move - 1] = current_turn
+    @fields[move - 1] = @current_turn
+    @fields
   end
 
   def player_wins?
@@ -44,7 +41,7 @@ class Game
       [0, 4, 8], [2, 4, 6]
     ]
     victory_conditions.each{ |condition|
-      return current_turn + ' wins!' if three_in_a_row?(condition)
+      return @current_turn + ' wins!' if three_in_a_row?(condition)
     }
   end
 
@@ -52,6 +49,6 @@ class Game
     a = condition[0]
     b = condition[1]
     c = condition[2]
-    return fields.values_at(a, b, c).uniq.count == 1
+    return @fields.values_at(a, b, c).uniq.count == 1
   end
 end

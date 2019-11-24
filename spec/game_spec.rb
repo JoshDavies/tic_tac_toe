@@ -52,15 +52,14 @@ describe Game do
 
   describe '#end_turn' do
     it 'allows a game to end in a draw' do
-      game.end_turn
-      expect(game.current_turn).to eq('O')
+      expect(game.end_turn).to eq('O')
+      expect(game.end_turn).to eq('X')
     end
   end
 
   describe '#update_field' do
     it 'updates the chosen field with a players move' do
-      game.update_field(1)
-      expect(game.fields).to eq(['X', 2, 3, 4, 5, 6, 7, 8, 9])
+      expect(game.update_field(1)).to eq(['X', 2, 3, 4, 5, 6, 7, 8, 9])
     end
   end
 
